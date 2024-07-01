@@ -1,0 +1,81 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Twój projekt API",
+    "version": "1.0.0",
+    "description": "API do rejestracji i logowania"
+  },
+  "paths": {
+    "/register": {
+      "post": {
+        "summary": "Rejestracja użytkownika",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fName": {
+                    "type": "string"
+                  },
+                  "lName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "gameName": {
+                    "type": "string"
+                  },
+                  "yourTag": {
+                    "type": "string"
+                  }
+                },
+                "required": ["fName", "lName", "email", "password", "gameName", "yourTag"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Użytkownik zarejestrowany"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Logowanie użytkownika",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": ["email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Użytkownik zalogowany"
+          },
+          "401": {
+            "description": "Błędny email lub hasło"
+          }
+        }
+      }
+    }
+  }
+}
